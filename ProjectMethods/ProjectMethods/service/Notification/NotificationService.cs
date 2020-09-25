@@ -5,9 +5,8 @@ using System.Text;
 
 namespace ProjectMethods.service
 {
-    interface InventoryService
+    interface NotificationService
     {
-        void addTicket(Ticket ticket);
-        void deleteTicket(Ticket ticket);
+        public void sendNotification(NotificationService notification);
     }
 }

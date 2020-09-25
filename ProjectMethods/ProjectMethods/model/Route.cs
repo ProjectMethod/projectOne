@@ -6,7 +6,8 @@ namespace ProjectMethods.model
 {
     class Route
     {
-        private string source;
-        private string destination;
+        private Location source;
+        private Location destination;
+        private int routeNumber;
     }
 }

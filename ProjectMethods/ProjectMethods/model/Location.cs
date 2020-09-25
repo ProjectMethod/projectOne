@@ -1,12 +1,12 @@
-﻿using ProjectMethods.models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ProjectMethods.model
 {
-    class Request
+    class Location
     {
-        private Ticket ticket;
+        private string state;
+        private string city;
     }
 }
