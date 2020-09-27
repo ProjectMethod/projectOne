@@ -1,4 +1,4 @@
-﻿using ProjectMethods.models;
+﻿using ProjectMethods.model;
 using ProjectMethods.service;
 using System;
 

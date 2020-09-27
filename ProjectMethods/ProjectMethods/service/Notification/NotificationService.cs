@@ -1,4 +1,4 @@
-﻿using ProjectMethods.models;
+﻿using ProjectMethods.model;
 using System;
 using System.Collections.Generic;
 using System.Text;
