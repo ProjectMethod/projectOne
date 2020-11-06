@@ -9,7 +9,7 @@ namespace ProjectMethods.service.Transaction
     {
         public void createTransaction(Ticket ticket)
         {
-            Console.WriteLine("Payment Successful.");
+            Console.WriteLine("Payment Successful.\n");
         }
     }
 }

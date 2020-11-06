@@ -7,6 +7,7 @@ namespace ProjectMethods.service
 {
     interface NotificationService
     {
-        public void sendNotification(NotificationService notification);
+        static List<Notification> notification = new List<Notification>();
+        public void sendNotification(Notification notification);
     }
 }

@@ -17,5 +17,23 @@ namespace ProjectMethods.model
             this.message = message;
             this.employeeReviewer = reviewer;
         }
+
+        public Ticket Ticket
+        {
+            get { return ticket; }
+            set { ticket = value; }
+        }
+
+        public string Message
+        {
+            get { return message; }
+            set { message = value; }
+        }
+
+        public UserData EmployeeReviewer
+        {
+            get { return employeeReviewer; }
+            set { employeeReviewer = value; }
+        }
     }
 }
