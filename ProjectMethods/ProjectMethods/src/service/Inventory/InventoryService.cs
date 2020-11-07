@@ -16,15 +16,13 @@ namespace ProjectMethods.service
         static List<Ticket> tickets = new List<Ticket>();
         static List<Request> requests = new List<Request>();
 
-        void addTicket(Ticket ticket);
-        void deleteTicket(Ticket ticket);
-        public void printAvaliableSeats(Route route);
+        bool addTicket(Ticket ticket);
+        bool deleteTicket(Ticket ticket);
+        public bool printAvaliableSeats(Route route);
         public double calculatePrice(Ticket ticket);
-        void updateTicket(Ticket ticket);
-        void createRequest(Request request);
-        void updateRequest(Request request);
-        List<Request> allRequest(UserData user);
-        public void printRequests();
-        public void removeRequests(Request request);
+        bool createRequest(Request request);
+        public bool updateRequest(Request request);
+        public bool printRequests();
+        public bool removeRequests(Request request);
     }
 }

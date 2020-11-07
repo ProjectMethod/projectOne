@@ -76,8 +76,8 @@ namespace ProjectMethods
 						if (existingUser)
 						{
 							Console.WriteLine("Would you like to go to current bookings or book a new flight?");
-							Console.WriteLine("- Current Bookings [1] ");
-							Console.WriteLine("- Book New Flight [2] \n");
+							Console.WriteLine(" - Current Bookings [1] ");
+							Console.WriteLine(" - Book New Flight [2] \n");
 							choice = Console.ReadLine();
 						}
 
