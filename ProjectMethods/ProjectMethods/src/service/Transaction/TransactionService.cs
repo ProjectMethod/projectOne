@@ -7,6 +7,6 @@ namespace ProjectMethods.service.Transaction
 {
     interface TransactionService
     {
-        public void createTransaction(Ticket ticket);
+        public bool createTransaction(Ticket ticket);
     }
 }

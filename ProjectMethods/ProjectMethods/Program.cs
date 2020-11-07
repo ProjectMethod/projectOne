@@ -217,7 +217,7 @@ namespace ProjectMethods
 					while (!logout)
 					{
 						Console.WriteLine("Hello employee. These are requests you must process. \n");
-						inventoryService.printRequests();
+						InventoryServiceImpl.printRequests();
 						Console.WriteLine(" - Back to login [b]");
 						choice = Console.ReadLine();
 						if (choice.Equals("b"))
@@ -230,9 +230,7 @@ namespace ProjectMethods
 							inventoryService.updateRequest(request);
 						}
 					}
-
 				}
-
 			}
 		}
 	}

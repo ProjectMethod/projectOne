@@ -9,34 +9,7 @@ namespace ProjectMethods.service
     class InventoryServiceImpl : InventoryService
     {
         NotificationService notificationService = new NotificationServiceImpl();
-
-        public bool addTicket(Ticket ticket)
-        {
-            try
-            {
-                InventoryService.tickets.Add(ticket);
-                Console.WriteLine("Added Ticket");
-                return true;
-            } catch(Exception)
-            {
-                return false;
-            }
-        }
-
-        public bool deleteTicket(Ticket ticket)
-        {
-            try
-            {
-                InventoryService.tickets.Remove(ticket);
-                ticket.status = Ticket.Status.Confirmed;
-                notificationService.sendNotification(new Notification(ticket, "Cancelled Ticket.", new UserData()));
-                return true;
-            } catch(Exception)
-            {
-                return false;
-            }
-        }
-
+        
         public static Ticket getTicketByNum(int ticketNum)
         {
             foreach (Ticket ticket in InventoryService.tickets)
@@ -64,6 +37,44 @@ namespace ProjectMethods.service
             }
         }
 
+        public static void printAllTickets()
+        {
+            int i = 0;
+            foreach (Ticket ticket in InventoryService.tickets)
+            {
+                Console.WriteLine("Ticket Number: " + ticket.TicketNumber + " | " +
+                   "Route: (Source) " + ticket.Route.Source.State + ", " + ticket.Route.Source.City + " (Destination) " + ticket.Route.Destination.State + ", " + ticket.Route.Destination.City + " | " +
+                   "Seat: " + ticket.Seat + " | " +
+                   "PRICE: $" + ticket.Price + " | Status: " + ticket.status + " [" + i++ + "]");
+            }
+        }
+
+        public bool addTicket(Ticket ticket)
+        {
+            if (ticket != null) {
+                InventoryService.tickets.Add(ticket);
+                Console.WriteLine("Added Ticket");
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        public bool deleteTicket(Ticket ticket)
+        {
+            try
+            {
+                InventoryService.tickets.Remove(ticket);
+                ticket.status = Ticket.Status.Confirmed;
+                notificationService.sendNotification(new Notification(ticket, "Cancelled Ticket.", new UserData()));
+                return true;
+            } catch(Exception)
+            {
+                return false;
+            }
+        }
+
         public bool printAvaliableSeats(Route route)
         {
             try
@@ -83,20 +94,25 @@ namespace ProjectMethods.service
 
         public double calculatePrice(Ticket ticket)
         {
-            double price = 0;
-            price += (double)ticket.Seat[0];
-            price *= ticket.TicketNumber * 20;
-            return price;
+            try
+            {
+                double price = 0;
+                price += (double)ticket.Seat[0];
+                price *= ticket.TicketNumber * 20;
+                return price;
+            } catch(Exception)
+            {
+                return 0;
+            }
         }
 
         public bool createRequest(Request request)
         {
-            try
-            {
+            if (request != null) {
                 InventoryService.requests.Add(request);
-                Console.WriteLine("Created Ticket");
+                Console.WriteLine("Created Request");
                 return true;
-            } catch(Exception)
+            } else
             {
                 return false;
             }
@@ -121,7 +137,9 @@ namespace ProjectMethods.service
                         // ticket is stuck to pending.
                         Ticket ticket = getTicketByNum(request.Ticket.TicketNumber);
                         ticket.status = Ticket.Status.Confirmed;
-                        notificationService.sendNotification(new Notification(ticket, "Confirmed Ticket.", new UserData()));
+                        UserData userData = new UserData();
+                        userData.Email = "employee@email.com";
+                        notificationService.sendNotification(new Notification(ticket, "Confirmed Ticket.", userData));
 
                         removeRequests(request);
                     }
@@ -175,18 +193,18 @@ namespace ProjectMethods.service
                     if (req.RequestId == request.RequestId)
                     {
                         InventoryService.requests.Remove(req);
-                        break;
+                        return true;
                     }
                 }
                 Console.WriteLine("Updated Ticket.");
-                return true;
+                return false;
             } catch(Exception)
             {
                 return false;
             }
         }
 
-        public bool printRequests()
+        public static bool printRequests()
         {
             try
             {
@@ -206,18 +224,6 @@ namespace ProjectMethods.service
             } catch (Exception)
             {
                 return false;
-            }
-        }
-
-        public static void printAllTickets()
-        {
-            int i = 0;
-            foreach (Ticket ticket in InventoryService.tickets)
-            {
-                Console.WriteLine("Ticket Number: " + ticket.TicketNumber + " | " +
-                   "Route: (Source) " + ticket.Route.Source.State + ", " + ticket.Route.Source.City + " (Destination) " + ticket.Route.Destination.State + ", " + ticket.Route.Destination.City + " | " +
-                   "Seat: " + ticket.Seat + " | " +
-                   "PRICE: $" + ticket.Price + " | Status: " + ticket.status + " [" + i++ + "]");
             }
         }
     }

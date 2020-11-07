@@ -22,7 +22,6 @@ namespace ProjectMethods.service
         public double calculatePrice(Ticket ticket);
         bool createRequest(Request request);
         public bool updateRequest(Request request);
-        public bool printRequests();
         public bool removeRequests(Request request);
     }
 }

@@ -7,9 +7,15 @@ namespace ProjectMethods.service.Transaction
 {
     class TransactionServiceImpl : TransactionService
     {
-        public void createTransaction(Ticket ticket)
+        public bool createTransaction(Ticket ticket)
         {
-            Console.WriteLine("Payment Successful.\n");
+            if (ticket != null) {
+                Console.WriteLine("Payment Successful.\n");
+                return true;
+            } else
+            {
+                return false;
+            }
         }
     }
 }

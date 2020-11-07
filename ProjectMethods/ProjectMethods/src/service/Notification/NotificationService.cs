@@ -8,6 +8,6 @@ namespace ProjectMethods.service
     interface NotificationService
     {
         static List<Notification> notification = new List<Notification>();
-        public void sendNotification(Notification notification);
+        public bool sendNotification(Notification notification);
     }
 }
