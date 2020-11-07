@@ -154,7 +154,7 @@ namespace ProjectMethods.service
                     if (Int16.Parse(choice) == 0)
                     {
                         Ticket ticket = getTicketByNum(request.Ticket.TicketNumber);
-                        ticket.status = Ticket.Status.Confirmed;
+                        ticket.status = Ticket.Status.Revised;
                         notificationService.sendNotification(new Notification(ticket, "Confirmed Ticket.", new UserData()));
                         Console.WriteLine("Changed seats.");
                         removeRequests(request);
