@@ -9,19 +9,32 @@ namespace ProjectMethods
 {
 	class Program
 	{
-		static bool confirm = false;
-		static bool bookAgain = false;
-		static bool existingUser = false;
-		static bool logout = false;
+		public static bool confirm = false;
+		public static bool bookAgain = false;
+		public static bool existingUser = false;
+		public static bool logout = false;
 
-		static InventoryService inventoryService = new InventoryServiceImpl();
-		static TransactionService transactionService = new TransactionServiceImpl();
-		static NotificationService notificationService = new NotificationServiceImpl();
+		public static InventoryService inventoryService = new InventoryServiceImpl();
+		public static TransactionService transactionService = new TransactionServiceImpl();
+		public static NotificationService notificationService = new NotificationServiceImpl();
 
 		static void Main(string[] args)
 		{
+			Program program = new Program(new InputServiceImpl());
+			program.startInterface();
+		}
 
+		public InputService inputService = new InputServiceImpl();
+		
+		public Program(InputService inputService)
+        {
+			this.inputService = inputService;
+        }
 
+		UserController userController = new UserController(new InputServiceImpl());
+		EmployeeController employeeController = new EmployeeController(new InputServiceImpl());
+		public void startInterface()
+        {
 			UserData newUser = new UserData();
 			UserData employee = new UserData();
 			employee.Name = "Employee Person";
@@ -38,21 +51,21 @@ namespace ProjectMethods
 				logout = false;
 				bookAgain = false;
 
-				choice = UserController.userSelectInterface(newUser, existingUser);
+				choice = userController.userSelectInterface(newUser, existingUser);
 
 				if (Int16.Parse(choice) == 1)
 				{
 					//------------------ USER LOGIN --------------------
 					// Create New User
-					UserController.userLogin(existingUser, logout, bookAgain, confirm, employee,
-						                     inventoryService, transactionService, notificationService);
-				
+					userController.userLogin(existingUser, logout, bookAgain, confirm, employee,
+											 inventoryService, transactionService, notificationService);
+
 				}
 
 				//------------------ EMPLOYEE LOGIN -----------------------
 				if (Int16.Parse(choice) == 2)
 				{
-					EmployeeController.employeeLogin(logout);
+					employeeController.employeeLogin(logout);
 				}
 			}
 		}

@@ -119,6 +119,7 @@ namespace ProjectMethods.service
         }
         public bool updateRequest(Request request)
         {
+            InputServiceImpl inputService = new InputServiceImpl();
             try
             {
                 string choice;
@@ -128,7 +129,7 @@ namespace ProjectMethods.service
                     Console.WriteLine("- Yes [0]");
                     Console.WriteLine("- No [1]");
 
-                    choice = Console.ReadLine();
+                    choice = inputService.pickCOnfirmConsoleRead();
 
                     if (Int16.Parse(choice) == 0)
                     {
@@ -150,7 +151,7 @@ namespace ProjectMethods.service
                     Console.WriteLine("Would you like to change seating of this Ticket?");
                     Console.WriteLine("- Yes [0]");
                     Console.WriteLine("- No [1]");
-                    choice = Console.ReadLine();
+                    choice = inputService.pickConfirmSeatingConsoleRead();
                     if (Int16.Parse(choice) == 0)
                     {
                         Ticket ticket = getTicketByNum(request.Ticket.TicketNumber);
@@ -166,7 +167,7 @@ namespace ProjectMethods.service
                     Console.WriteLine("Would you like to Cancel this Ticket?");
                     Console.WriteLine("- Yes [0]");
                     Console.WriteLine("- No [1]");
-                    choice = Console.ReadLine();
+                    choice = inputService.pickConfirmCancelConsoleRead();
                     if (Int16.Parse(choice) == 0)
                     {
                         Ticket ticket = getTicketByNum(request.Ticket.TicketNumber);
