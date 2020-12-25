@@ -36,12 +36,13 @@ namespace ProjectMethods.controller
 						inventoryService.updateRequest(request);
 					}
 				}
+				return true;
 			}
 			catch (Exception e)
 			{
 				return false;
 			}
-			return true;
+			
 		}
     }
 }

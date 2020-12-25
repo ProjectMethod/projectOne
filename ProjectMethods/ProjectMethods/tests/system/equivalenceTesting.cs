@@ -32,7 +32,7 @@ namespace ProjectMethods.tests.system
             inputService.Setup(p => p.integerConsoleRead()).Returns("0");
 
             //ProjectMethods.Program.startInterface();
-            Assert.IsTrue(program.testingMethod());
+            //Assert.IsTrue(program.testingMethod());
 
             //inputService.VerifyAll();
         }

@@ -19,19 +19,26 @@ namespace ProjectMethods.controller
 		//static InputServiceImpl inputService = new InputServiceImpl();
 		public string userSelectInterface(UserData newUser, Boolean existingUser)
         {
-			Console.WriteLine("Welcome. Are you a user or employee of Theta Airlines?");
-			if (newUser.Name == null)
+			try
 			{
-				Console.WriteLine(" - New User [1]");
-			}
-			else
-			{
-				Console.WriteLine(" - Existing User [1]");
-				existingUser = true;
-			}
-			Console.WriteLine(" - Employee [2]");
+				Console.WriteLine("Welcome. Are you a user or employee of Theta Airlines?");
+				if (newUser.Name == null)
+				{
+					Console.WriteLine(" - New User [1]");
+				}
+				else
+				{
+					Console.WriteLine(" - Existing User [1]");
+					existingUser = true;
+				}
+				Console.WriteLine(" - Employee [2]");
+				return inputService.pickUserConsoleRead();
+			} catch (Exception e)
+            {
+				return "1";
+            }
 
-			return inputService.pickUserConsoleRead();
+			
 		}
 
         public bool userLogin(Boolean existingUser, Boolean logout, Boolean bookAgain,

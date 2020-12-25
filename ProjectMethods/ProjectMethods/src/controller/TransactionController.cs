@@ -18,7 +18,7 @@ namespace ProjectMethods.controller
 			this.inputService = inputService;
 		}
 
-		public bool transactionInterface(Boolean existingUser, Boolean logout, Boolean bookAgain,
+		public double transactionInterface(Boolean existingUser, Boolean logout, Boolean bookAgain,
 									 Boolean confirm, UserData employee,
 									 InventoryService inventoryService,
 									 TransactionService transactionService, NotificationService notificationService,
@@ -106,12 +106,13 @@ namespace ProjectMethods.controller
 						}
 					}
 				}
+				return ticket.Price;
 			}
 			catch (Exception e)
 			{
-				return false;
+				return 0;
 			}
-			return true;
+			
 		}
     }
 }
